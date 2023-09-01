@@ -9,8 +9,9 @@ class CompanySerializer(serializers.ModelSerializer):
         fields = "__all__" 
 
 class AdvocateSerializer(serializers.ModelSerializer):
-    company = CompanySerializer()
+    company = CompanySerializer(read_only = True)
     class Meta :
         model = Advocate
         fields = "__all__"
-        
+
+

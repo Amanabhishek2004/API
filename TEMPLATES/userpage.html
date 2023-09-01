@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>User Details</title>
+    <title>API Data Rendering</title>
     <!-- Add Bootstrap CSS (you can use their CDN) -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/5.3.0/css/bootstrap.min.css">
     <!-- Add Font Awesome CSS (you can use their CDN) -->
@@ -20,7 +20,7 @@
 
         /* Navbar */
         .navbar {
-            background-color: #28a745; /* Green navbar background color */
+            background-color: #181834; /* Green navbar background color */
             color: #c9d1d9;
             padding: 10px;
             display: flex;
@@ -57,7 +57,7 @@
             background-color: #252c36;
         }
 
-        /* Container for cards and form */
+        /* Container for cards */
         .container {
             display: flex;
             flex-wrap: wrap;
@@ -72,7 +72,7 @@
             color: #c9d1d9;
             border: 1px solid #30363d;
             border-radius: 6px;
-            width: 600px; /* Adjust the width for the large card */
+            width: 300px;
             box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
         }
 
@@ -85,52 +85,41 @@
         }
 
         .card-title {
-            font-size: 24px; /* Larger font size for the title */
+            font-size: 18px;
             font-weight: bold;
             margin-bottom: 10px;
         }
 
         .card-description {
-            font-size: 18px; /* Larger font size for the description */
-            margin-bottom: 20px;
+            font-size: 14px;
+            margin-bottom: 10px;
         }
 
-        
-        .user-form {
-            background-color: #161b22;
-            color: #c9d1d9;
-            border: 1px solid #30363d;
-            border-radius: 6px;
-            width: 300px; /* Adjust the width for the form */
-            padding: 20px;
-        }
-
-        .form-group {
-            margin-bottom: 15px;
-        }
-
-        .form-group label {
-            font-weight: bold;
-        }
-
-        .form-group input {
-            width: 100%;
-            padding: 10px;
-            border: 1px solid #30363d;
-            border-radius: 4px;
-        }
-
-        .form-group button {
-            background-color: #28a745;
-            color: #ffffff;
-            border: none;
+        .card-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 12px;
             padding: 10px 20px;
-            border-radius: 4px;
-            cursor: pointer;
+            background-color: #161b22;
+            border-top: 1px solid #30363d;
         }
 
-        .form-group button:hover {
-            background-color: #218838;
+        .repo-icon {
+            font-size: 16px;
+            color: #c9d1d9;
+            margin-right: 5px;
+        }
+
+        .api-icon {
+            font-size: 24px; /* Adjust the size of the API icon as needed */
+            color: #ffffff; /* White icon color */
+            margin-left: 20px; /* Adjust the margin as needed */
+        }
+
+        /* Fill star icon with green color */
+        .green-star {
+            color: #28a745; /* Green star color */
         }
     </style>
 </head>
@@ -145,32 +134,28 @@
             <a href="#">Button 3</a>
         </div>
     </div>
-
+<!-- <hr> -->
     <div class="container">
-        <!-- Large User Card -->
+        <!-- Card 1 -->
+        {% for i in data %}
         <div class="card">
             <div class="card-content">
-                <h5 class="card-title">User Details</h5>
-                <p class="card-description">Name: John Doe</p>
-                <p class="card-description">Email: johndoe@example.com</p>
-                <p class="card-description">Location: New York</p>
+                <h5 class="card-title">{{i.username}}</h5>
+                <p class="card-description">{{i.bio}}</p>
+            </div>
+            <div class="card-footer">
+                <div>
+                    <i class="fas fa-code-branch repo-icon"></i> {{n}} branches
+                </div>
+                <div>
+                    <i class="fas fa-star green-star repo-icon"></i> {{n}} star <!-- Apply the green-star class here -->
+                </div>
             </div>
         </div>
-
-        <!-- User Data Form -->
-        <div class="user-form">
-            <h5>Add User Data</h5>
-            <form method ="POST" action = "">
-                {% csrf_token %}
-
-                {{form.as_p}}
-                <div class="form-group">
-                    <button type="submit">Submit</button>
-                </div>
-            </form>
-        </div>
+        
+        {% endfor %}
+        
     </div>
 </body>
 </html>
-
 
