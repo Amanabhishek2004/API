@@ -5,14 +5,12 @@ from .models import *
 from .serializers import *
 
 
-@api_view(['GET', 'POST'])
-def endpoint(request):
-    if request.method == "GET":
-        data = Advocate.objects.all()
-        serializer = AdvocateSerializer(data, many=True)
-        return Response(serializer.data)
+class endpoint(generics.RetrieveAPIView,generics.ListAPIView):
+    queryset = Advocate.objects.all()
+    serializer_class = AdvocateSerializer
+    lookup_field = "username"
 
-
+endpoint_view = endpoint.as_view()
 
 
 

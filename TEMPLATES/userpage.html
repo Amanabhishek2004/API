@@ -111,6 +111,43 @@
             margin-right: 5px;
         }
 
+        /* Container for the search bar */
+.search-bar {
+    display: flex;
+    align-items: center;
+    background-color: #333; /* Dark background color */
+    border-radius: 4px;
+    padding: 8px;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2); /* Subtle shadow */
+}
+
+/* Input field */
+.search-input {
+    flex: 1;
+    background-color: #444; /* Slightly lighter background color */
+    color: #fff; /* Text color */
+    border: none;
+    padding: 8px;
+    border-radius: 4px;
+    outline: none; /* Remove the default focus outline */
+}
+
+/* Search button */
+.search-button {
+    background-color: #0073e6; /* GitHub's primary color */
+    color: #fff; /* Text color */
+    border: none;
+    border-radius: 4px;
+    padding: 8px 16px;
+    margin-left: 8px; /* Spacing between input and button */
+    cursor: pointer;
+}
+
+/* Hover effect for the button */
+.search-button:hover {
+    background-color: #005bac; /* Darker shade of primary color */
+}
+
         .api-icon {
             font-size: 24px; /* Adjust the size of the API icon as needed */
             color: #ffffff; /* White icon color */
@@ -125,8 +162,16 @@
 </head>
 <body>
     <div class="navbar">
+
         <!-- Add the API icon here -->
         <i class="fas fa-cogs api-icon"></i>
+        
+        <div class="search-bar">
+            <form method="GET">
+            <input type="text" placeholder="Search..." class="search-input">
+            <button class="search-button">Search</button>
+        </form>
+        </div>
         <h1>API Data</h1>
         <div class="navbar-buttons">
             <a href="#">Button 1</a>
