@@ -194,7 +194,7 @@
         <i class="fas fa-cogs api-icon"></i>
         <h1>API Data</h1>
         <div class="navbar-buttons">
-            <a href="#">Button 1</a>
+            <a href="http://127.0.0.1:8000/advocates/{{data.username}}">VIEW-DATA</a>
             <a href="#">Button 2</a>
             <a href="#">Button 3</a>
         </div>
@@ -217,7 +217,7 @@
             </div>
     
         <!-- User Data Form -->
-        {% if request.user.username == data.username %}
+        
         <div class="user-form">
             <h5>Add User Data</h5>
             <form method ="POST" action = "">
@@ -230,7 +230,7 @@
                 </div>
             </form>
         </div>
-        {% endif %}
+        
     </div>
 </body>
 </html>

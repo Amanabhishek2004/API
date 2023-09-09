@@ -167,16 +167,21 @@
         <i class="fas fa-cogs api-icon"></i>
         
         <div class="search-bar">
-            <form method="GET">
-            <input type="text" placeholder="Search..." class="search-input">
+            <form method="GET" >
+            <input type="text" placeholder="Search..." class="search-input" name = "q">
             <button class="search-button">Search</button>
         </form>
         </div>
         <h1>API Data</h1>
         <div class="navbar-buttons">
-            <a href="#">Button 1</a>
-            <a href="#">Button 2</a>
-            <a href="#">Button 3</a>
+           {% if request.user.is_authenticated %}
+           <a href="{% url 'main:logout-user' %}">Logout</a>
+           <a href="#"> Hello {{request.user.username}} !!!</a>
+           {% else %}
+           <a href="{% url 'main:login-user' %}">Login</a>
+           
+           {% endif %} 
+            
         </div>
     </div>
 <!-- <hr> -->
@@ -185,7 +190,7 @@
         {% for i in data %}
         <div class="card">
             <div class="card-content">
-                <h5 class="card-title">{{i.username}}</h5>
+                <h5 class="card-title"><a href = "{% url 'main:user' i.username %}">{{i.username}}</a></h5>
                 <p class="card-description">{{i.bio}}</p>
             </div>
             <div class="card-footer">
@@ -197,8 +202,8 @@
                 </div>
             </div>
         </div>
-        
         {% endfor %}
+        
         
     </div>
 </body>
